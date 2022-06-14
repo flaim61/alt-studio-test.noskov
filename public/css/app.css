@@ -1,0 +1,9 @@
+.map{
+  background: #333;
+  height: 800px;
+}
+.point-card:hover{
+  background: #007bff;
+  cursor: pointer;
+  color: white;
+}
