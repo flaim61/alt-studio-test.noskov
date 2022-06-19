@@ -27,8 +27,8 @@ Route::get('/contact', function () {
 
 Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact-form');
 Route::post('/user/login', [RegisterController::class, 'login'])->name('login');
-Route::post('/user/logout', [RegisterController::class, 'logout'])->name('logout');
+Route::post('/user/logout', [RegisterController::class, 'logout'])->name('logout')->middleware(['password.confirm']);
 Route::post('/user/register', [RegisterController::class, 'register'])->name('useradd');
-Route::post('/point/add', [PointController::class, 'add'])->name('pointadd');
-Route::post('/point/delete/{id}', [PointController::class, 'deletePointById']);
-Route::post('/point/update/{id}', [PointController::class, 'updatePointById']);
+Route::post('/point/add', [PointController::class, 'add'])->name('pointadd')->middleware('auth');
+Route::post('/point/delete/{id}', [PointController::class, 'deletePointById'])->middleware('auth');
+Route::post('/point/update/{id}', [PointController::class, 'updatePointById'])->middleware('auth');

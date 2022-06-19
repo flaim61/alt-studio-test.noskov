@@ -13,7 +13,7 @@ class PointRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,9 +24,8 @@ class PointRequest extends FormRequest
     public function rules()
     {
         return [
-            'long' => 'required',
-            'width' => 'required',
-            'name' => 'required|string',
+          'long' => "required|numeric",
+          'width' => 'required|numeric'
         ];
     }
 
@@ -34,7 +33,8 @@ class PointRequest extends FormRequest
       return [
         'long.required' => 'Укажите долготу',
         'width.required' => 'Укажите ширину',
-        'name.required' => 'Укажите название точки',
+        'long.numeric' => 'Вы ввели некорректную долготу',
+        'width.numeric' => 'Вы ввели некорретную ширину'
       ];
     }
 }
